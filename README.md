@@ -38,6 +38,8 @@ _It will also include the licenses that the engine uses._
 When you enable this plugin, it is ready to create a copyright license type when you export the project.
 The License Me dock will also be activated, you can change any parameter you want.
 
+License files are text files that begin with the name LICENSE or EULA and end with the extension TXT, UC, MD, or EULA. (Also accept LICENSE/EULA Without extension)
+
 ### Auto create file with All licenses and Custom License
 Just go to export your project and the folder you exported it to, you will be able to see the generated license.
 
