@@ -1,0 +1,324 @@
+[gd_scene load_steps=11 format=3 uid="uid://bl4durt5kna44"]
+
+[ext_resource type="Script" path="res://addons/license_me/dock/main.gd" id="1_b7uhi"]
+[ext_resource type="PackedScene" uid="uid://kk02v8p8mpwl" path="res://addons/license_me/dock/label.tscn" id="1_p0g55"]
+[ext_resource type="PackedScene" uid="uid://8ofrjvam78l1" path="res://addons/license_me/dock/check.tscn" id="2_5be6f"]
+[ext_resource type="Script" path="res://addons/license_me/dock/label.gd" id="2_734bi"]
+[ext_resource type="Script" path="res://addons/license_me/dock/menu_bar.gd" id="3_q6aw2"]
+[ext_resource type="Script" path="res://addons/license_me/dock/button.gd" id="5_7jiwl"]
+[ext_resource type="Script" path="res://addons/license_me/dock/line_edit.gd" id="6_xpjo3"]
+[ext_resource type="Script" path="res://addons/license_me/dock/text_edit.gd" id="7_c82qy"]
+[ext_resource type="PackedScene" uid="uid://b5ppfm1sd1csv" path="res://addons/license_me/dock/popup_panel.tscn" id="7_t6vxx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p8i48"]
+bg_color = Color(0, 0, 0, 0.701961)
+
+[node name="License Me" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p8i48")
+script = ExtResource("1_b7uhi")
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VC" type="VBoxContainer" parent="MC"]
+layout_mode = 2
+
+[node name="Tittle" type="Label" parent="MC/VC"]
+layout_mode = 2
+text = "License Me Settings"
+horizontal_alignment = 1
+
+[node name="Sep2" type="HSeparator" parent="MC/VC"]
+layout_mode = 2
+
+[node name="SC" type="ScrollContainer" parent="MC/VC"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VB" type="VBoxContainer" parent="MC/VC/SC"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Option3" parent="MC/VC/SC/VB" instance=ExtResource("1_p0g55")]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Export Settings"
+horizontal_alignment = 1
+script = ExtResource("2_734bi")
+
+[node name="SC" type="PanelContainer" parent="MC/VC/SC/VB"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GC" type="GridContainer" parent="MC/VC/SC/VB/SC"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="Option2" parent="MC/VC/SC/VB/SC/GC" instance=ExtResource("1_p0g55")]
+layout_mode = 2
+text = "License Type"
+uppercase = true
+script = ExtResource("2_734bi")
+
+[node name="TYPE" type="MenuButton" parent="MC/VC/SC/VB/SC/GC" node_paths=PackedStringArray("label")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MIT"
+item_count = 18
+popup/item_0/text = "COPYRIGHT"
+popup/item_1/text = "IGNORE"
+popup/item_1/id = 1
+popup/item_2/text = "MIT"
+popup/item_2/checked = true
+popup/item_2/id = 2
+popup/item_3/text = "AGPL"
+popup/item_3/id = 3
+popup/item_4/text = "APACHE"
+popup/item_4/id = 4
+popup/item_5/text = "BSD"
+popup/item_5/id = 5
+popup/item_6/text = "CC0"
+popup/item_6/id = 6
+popup/item_7/text = "CC-BY"
+popup/item_7/id = 7
+popup/item_8/text = "CC-BY-NC"
+popup/item_8/id = 8
+popup/item_9/text = "CC-BY-NC-SA"
+popup/item_9/id = 9
+popup/item_10/text = "CC-BY-SA"
+popup/item_10/id = 10
+popup/item_11/text = "EUPL-1.2"
+popup/item_11/id = 11
+popup/item_12/text = "GPL-2"
+popup/item_12/id = 12
+popup/item_13/text = "GPL-3"
+popup/item_13/id = 13
+popup/item_14/text = "ISC"
+popup/item_14/id = 14
+popup/item_15/text = "LGPL-3"
+popup/item_15/id = 15
+popup/item_16/text = "MPL-2"
+popup/item_16/id = 16
+popup/item_17/text = "UNLICENSE"
+popup/item_17/id = 17
+script = ExtResource("3_q6aw2")
+label = NodePath("../Option2")
+
+[node name="Option9" parent="MC/VC/SC/VB/SC/GC" instance=ExtResource("1_p0g55")]
+layout_mode = 2
+text = "Name License Generated"
+script = ExtResource("2_734bi")
+
+[node name="FILE_NAME" type="LineEdit" parent="MC/VC/SC/VB/SC/GC" node_paths=PackedStringArray("label")]
+layout_mode = 2
+text = "LICENSE"
+placeholder_text = "txt, uc, md"
+alignment = 1
+script = ExtResource("6_xpjo3")
+label = NodePath("../Option9")
+
+[node name="Option8" parent="MC/VC/SC/VB/SC/GC" instance=ExtResource("1_p0g55")]
+layout_mode = 2
+text = "Extension License Generated"
+script = ExtResource("2_734bi")
+
+[node name="FILE_EXTENSION" type="LineEdit" parent="MC/VC/SC/VB/SC/GC" node_paths=PackedStringArray("label")]
+layout_mode = 2
+text = "txt"
+placeholder_text = "txt, uc, md"
+alignment = 1
+script = ExtResource("6_xpjo3")
+label = NodePath("../Option8")
+
+[node name="Option3" parent="MC/VC/SC/VB/SC/GC" instance=ExtResource("1_p0g55")]
+layout_mode = 2
+text = "Author"
+script = ExtResource("2_734bi")
+
+[node name="AUTHOR" type="LineEdit" parent="MC/VC/SC/VB/SC/GC" node_paths=PackedStringArray("label")]
+layout_mode = 2
+text = "Twister"
+placeholder_text = "Author"
+alignment = 1
+script = ExtResource("6_xpjo3")
+label = NodePath("../Option3")
+
+[node name="Option4" parent="MC/VC/SC/VB/SC/GC" instance=ExtResource("1_p0g55")]
+layout_mode = 2
+text = "Project Name"
+script = ExtResource("2_734bi")
+
+[node name="PROJECT" type="LineEdit" parent="MC/VC/SC/VB/SC/GC" node_paths=PackedStringArray("label")]
+layout_mode = 2
+text = "License me"
+placeholder_text = "My Awsome Game"
+alignment = 1
+script = ExtResource("6_xpjo3")
+label = NodePath("../Option4")
+
+[node name="Option5" parent="MC/VC/SC/VB/SC/GC" instance=ExtResource("1_p0g55")]
+layout_mode = 2
+text = "Year"
+script = ExtResource("2_734bi")
+
+[node name="YEAR" type="LineEdit" parent="MC/VC/SC/VB/SC/GC" node_paths=PackedStringArray("label")]
+layout_mode = 2
+text = "2024"
+placeholder_text = "2024"
+alignment = 1
+script = ExtResource("6_xpjo3")
+label = NodePath("../Option5")
+
+[node name="Sep3" type="HSeparator" parent="MC/VC/SC/VB"]
+layout_mode = 2
+
+[node name="Option4" parent="MC/VC/SC/VB" instance=ExtResource("1_p0g55")]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Copyrights Clausules Settings"
+horizontal_alignment = 1
+script = ExtResource("2_734bi")
+
+[node name="SC2" type="PanelContainer" parent="MC/VC/SC/VB"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GC" type="GridContainer" parent="MC/VC/SC/VB/SC2"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="Option3" parent="MC/VC/SC/VB/SC2/GC" instance=ExtResource("1_p0g55")]
+self_modulate = Color(0.745098, 0.745098, 0.745098, 1)
+layout_mode = 2
+text = "Attribution Required"
+script = ExtResource("2_734bi")
+
+[node name="ATTRIBUTION" parent="MC/VC/SC/VB/SC2/GC" node_paths=PackedStringArray("label") instance=ExtResource("2_5be6f")]
+layout_mode = 2
+tooltip_text = "Place any attribution is required of any content derived from the software."
+disabled = true
+button_pressed = true
+label = NodePath("../Option3")
+
+[node name="Option7" parent="MC/VC/SC/VB/SC2/GC" instance=ExtResource("1_p0g55")]
+self_modulate = Color(0.745098, 0.745098, 0.745098, 1)
+layout_mode = 2
+text = "No Reverse Engineer Allowed"
+script = ExtResource("2_734bi")
+
+[node name="LIMITATIONS" parent="MC/VC/SC/VB/SC2/GC" node_paths=PackedStringArray("label") instance=ExtResource("2_5be6f")]
+layout_mode = 2
+tooltip_text = "Place the reverse engineering notice is not allowed."
+disabled = true
+button_pressed = true
+label = NodePath("../Option7")
+
+[node name="Option4" parent="MC/VC/SC/VB/SC2/GC" instance=ExtResource("1_p0g55")]
+self_modulate = Color(0.745098, 0.745098, 0.745098, 1)
+layout_mode = 2
+text = "No Modification Allowed"
+script = ExtResource("2_734bi")
+
+[node name="MODIFICATIONS_AND_DERIVATE_WORKS" parent="MC/VC/SC/VB/SC2/GC" node_paths=PackedStringArray("label") instance=ExtResource("2_5be6f")]
+layout_mode = 2
+tooltip_text = "Licensee can not allow modifications and derivated works of the software."
+disabled = true
+button_pressed = true
+label = NodePath("../Option4")
+
+[node name="Option5" parent="MC/VC/SC/VB/SC2/GC" instance=ExtResource("1_p0g55")]
+self_modulate = Color(0.745098, 0.745098, 0.745098, 1)
+layout_mode = 2
+text = "No Commertial Allowed"
+script = ExtResource("2_734bi")
+
+[node name="COMMERCIAL" parent="MC/VC/SC/VB/SC2/GC" node_paths=PackedStringArray("label") instance=ExtResource("2_5be6f")]
+layout_mode = 2
+tooltip_text = "Place the clausule for the licensee: not allow commersial use."
+disabled = true
+button_pressed = true
+label = NodePath("../Option5")
+
+[node name="Option10" parent="MC/VC/SC/VB/SC2/GC" instance=ExtResource("1_p0g55")]
+self_modulate = Color(0.745098, 0.745098, 0.745098, 1)
+layout_mode = 2
+text = "Country Governing Law"
+script = ExtResource("2_734bi")
+
+[node name="COUNTRY" type="LineEdit" parent="MC/VC/SC/VB/SC2/GC"]
+self_modulate = Color(0.745098, 0.745098, 0.745098, 1)
+layout_mode = 2
+tooltip_text = "Example: EEUU, China, Brasil, España, Chile, Argentina, Peru, Japan..."
+placeholder_text = "You country or empty to ignore governing law clause"
+alignment = 1
+script = ExtResource("6_xpjo3")
+
+[node name="Option6" parent="MC/VC/SC/VB/SC2/GC" instance=ExtResource("1_p0g55")]
+self_modulate = Color(0.745098, 0.745098, 0.745098, 1)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Extra Clausules"
+script = ExtResource("2_734bi")
+
+[node name="EXTRA_CLAUSULE" type="TextEdit" parent="MC/VC/SC/VB/SC2/GC"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "You can add your custom clauses as text"
+placeholder_text = "(Optional) Add custom clausules"
+editable = false
+script = ExtResource("7_c82qy")
+
+[node name="HSeparator2" type="HSeparator" parent="MC/VC"]
+layout_mode = 2
+
+[node name="manual_bake" type="Button" parent="MC/VC"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Create a manual license result on selected path."
+text = "Manual Baking"
+script = ExtResource("5_7jiwl")
+
+[node name="HSeparator" type="HSeparator" parent="MC/VC"]
+layout_mode = 2
+
+[node name="HC" type="HBoxContainer" parent="MC/VC"]
+layout_mode = 2
+
+[node name="reset" type="Button" parent="MC/VC/HC"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Back to the previous changes saved!"
+text = "Reset Settings"
+script = ExtResource("5_7jiwl")
+
+[node name="VS" type="VSeparator" parent="MC/VC/HC"]
+layout_mode = 2
+
+[node name="save" type="Button" parent="MC/VC/HC"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Save changes in the disk for future uses of the project"
+text = "Save Settings"
+script = ExtResource("5_7jiwl")
+
+[node name="PopupPanel" parent="." instance=ExtResource("7_t6vxx")]
+visible = false

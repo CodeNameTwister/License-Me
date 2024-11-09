@@ -1,0 +1,108 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5ppfm1sd1csv"]
+
+[ext_resource type="Script" path="res://addons/license_me/dock/button.gd" id="1_3jmnb"]
+[ext_resource type="Script" path="res://addons/license_me/dock/popup_panel.gd" id="1_ukenk"]
+[ext_resource type="Script" path="res://addons/license_me/dock/label.gd" id="2_ft75m"]
+
+[node name="PopupPanel" type="PopupPanel"]
+auto_translate_mode = 1
+title = "MANUAL BAKING"
+initial_position = 1
+size = Vector2i(382, 271)
+visible = true
+script = ExtResource("1_ukenk")
+
+[node name="MC" type="MarginContainer" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 378.0
+offset_bottom = 267.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VB" type="VBoxContainer" parent="MC"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MC/VB"]
+layout_mode = 2
+text = "Select Bake Option"
+horizontal_alignment = 1
+uppercase = true
+script = ExtResource("2_ft75m")
+
+[node name="HSeparator2" type="HSeparator" parent="MC/VB"]
+layout_mode = 2
+
+[node name="HB" type="GridContainer" parent="MC/VB"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MC/VB/HB"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Build All"
+horizontal_alignment = 2
+script = ExtResource("2_ft75m")
+
+[node name="build_all" type="CheckButton" parent="MC/VB/HB"]
+layout_mode = 2
+size_flags_horizontal = 2
+tooltip_text = "Search and add all Licenses files for the manual bake!
+
+if this is disabled, only add the custom licensed defined with dock params."
+button_pressed = true
+
+[node name="Label2" type="Label" parent="MC/VB/HB"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Add Godot Licenses"
+horizontal_alignment = 2
+script = ExtResource("2_ft75m")
+
+[node name="godot_licenses" type="CheckButton" parent="MC/VB/HB"]
+layout_mode = 2
+size_flags_horizontal = 2
+tooltip_text = "Add all in built licenses used by the engine to the manual bake!"
+button_pressed = true
+
+[node name="Control" type="Control" parent="MC/VB"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="text" type="Button" parent="MC/VB"]
+layout_mode = 2
+size_flags_vertical = 8
+tooltip_text = "Bake a file with all licenses (defined by options) in the selected path."
+text = "Bake License"
+script = ExtResource("1_3jmnb")
+
+[node name="HSeparator" type="HSeparator" parent="MC/VB"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="SC" type="ScrollContainer" parent="MC/VB"]
+layout_mode = 2
+vertical_scroll_mode = 0
+
+[node name="Selected" type="LineEdit" parent="MC/VB/SC"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+placeholder_text = "Message: Press bake button!"
+alignment = 1
+editable = false
+
+[node name="FileDialog" type="FileDialog" parent="MC/VB"]
+auto_translate_mode = 1
+title = "Open a Directory"
+size = Vector2i(500, 300)
+min_size = Vector2i(200, 200)
+ok_button_text = "Select Current Folder"
+dialog_hide_on_ok = true
+file_mode = 2
+access = 2
+
+[connection signal="dir_selected" from="MC/VB/FileDialog" to="." method="_on_file_dialog_dir_selected"]
+[connection signal="file_selected" from="MC/VB/FileDialog" to="." method="_on_file_dialog_file_selected"]

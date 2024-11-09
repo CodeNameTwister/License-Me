@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://8ofrjvam78l1"]
+
+[ext_resource type="Script" path="res://addons/license_me/dock/check.gd" id="1_0iro7"]
+
+[node name="Check" type="CheckBox"]
+size_flags_horizontal = 2
+script = ExtResource("1_0iro7")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

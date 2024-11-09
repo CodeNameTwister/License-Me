@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://ww55w1pk4cxx"]
+
+[ext_resource type="Script" path="res://addons/license_me/gui/main.gd" id="1_pbagn"]
+[ext_resource type="Script" path="res://addons/license_me/gui/action_btn.gd" id="2_d5tni"]
+[ext_resource type="Script" path="res://addons/license_me/gui/version.gd" id="3_r5hu3"]
+
+[node name="LicenseMeGUI" type="PanelContainer" node_paths=PackedStringArray("tree", "text")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pbagn")
+tree = NodePath("MC/VB/HB/SC1/List")
+text = NodePath("MC/VB/HB/SC2/TE")
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VB" type="VBoxContainer" parent="MC"]
+layout_mode = 2
+
+[node name="Tittle" type="HBoxContainer" parent="MC/VB"]
+layout_mode = 2
+
+[node name="__" type="Control" parent="MC/VB/Tittle"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MC/VB/Tittle"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "VIEW LICENSES"
+horizontal_alignment = 1
+
+[node name="close" type="Button" parent="MC/VB/Tittle"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "X"
+script = ExtResource("2_d5tni")
+
+[node name="Sep" type="HSeparator" parent="MC/VB"]
+layout_mode = 2
+
+[node name="HB" type="HBoxContainer" parent="MC/VB"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SC1" type="ScrollContainer" parent="MC/VB/HB"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="List" type="Tree" parent="MC/VB/HB/SC1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SC2" type="ScrollContainer" parent="MC/VB/HB"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TE" type="TextEdit" parent="MC/VB/HB/SC2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Please select a license available in the structure on the left to view the information."
+
+[node name="HB2" type="HBoxContainer" parent="MC/VB"]
+layout_mode = 2
+
+[node name="__" type="Control" parent="MC/VB/HB2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="close" type="Button" parent="MC/VB/HB2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Close"
+script = ExtResource("2_d5tni")
+
+[node name="Version" type="Label" parent="MC/VB/HB2"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "License Me"
+horizontal_alignment = 2
+script = ExtResource("3_r5hu3")

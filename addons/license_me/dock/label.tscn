@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://kk02v8p8mpwl"]
+
+[node name="Option" type="Label"]
+size_flags_horizontal = 10
+text = "OPTION"
