@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5ppfm1sd1csv"]
+[gd_scene load_steps=5 format=3 uid="uid://b5ppfm1sd1csv"]
 
 [ext_resource type="Script" path="res://addons/license_me/dock/button.gd" id="1_3jmnb"]
 [ext_resource type="Script" path="res://addons/license_me/dock/popup_panel.gd" id="1_ukenk"]
 [ext_resource type="Script" path="res://addons/license_me/dock/label.gd" id="2_ft75m"]
+[ext_resource type="Script" path="res://addons/license_me/dock/taction_btn.gd" id="4_l1ilb"]
 
 [node name="PopupPanel" type="PopupPanel"]
 auto_translate_mode = 1
@@ -93,6 +94,11 @@ size_flags_vertical = 8
 placeholder_text = "Message: Press bake button!"
 alignment = 1
 editable = false
+
+[node name="close" type="Button" parent="MC/VB"]
+layout_mode = 2
+text = "Close"
+script = ExtResource("4_l1ilb")
 
 [node name="FileDialog" type="FileDialog" parent="MC/VB"]
 auto_translate_mode = 1
